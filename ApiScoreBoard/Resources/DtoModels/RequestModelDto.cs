@@ -7,6 +7,7 @@ namespace ApiScoreBoard.Resources.DtoModels
 {
     public class RequestModelDto
     {
+        public int Id { get; set; }
         public string UserId { get; set; }
         public bool Accepted { get; set; }
         public int RequestedQuantity { get; set; }

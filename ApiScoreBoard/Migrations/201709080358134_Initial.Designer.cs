@@ -13,7 +13,7 @@ namespace ApiScoreBoard.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201709070250509_Initial"; }
+            get { return "201709080358134_Initial"; }
         }
         
         string IMigrationMetadata.Source

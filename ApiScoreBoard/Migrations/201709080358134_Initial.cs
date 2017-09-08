@@ -17,6 +17,10 @@ namespace ApiScoreBoard.Migrations
                         RequestedQuantity = c.Int(nullable: false),
                         ImgUrl = c.String(),
                         Reason = c.String(),
+                        CreatedBy = c.String(),
+                        CreatedDate = c.DateTime(),
+                        UpdatedBy = c.String(),
+                        UpdatedDate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -75,6 +79,10 @@ namespace ApiScoreBoard.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         RequestId = c.Int(nullable: false),
                         UserId = c.String(maxLength: 128),
+                        CreatedBy = c.String(),
+                        CreatedDate = c.DateTime(),
+                        UpdatedBy = c.String(),
+                        UpdatedDate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.RequestModels", t => t.RequestId, cascadeDelete: true)

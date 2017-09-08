@@ -11,6 +11,10 @@ namespace ApiScoreBoard.App_Start
 {
     public class MapperProfile : Profile
     {
+        public MapperProfile()
+        {
+        }
+
         protected override void Configure()
         {
             // Map Model to Dto

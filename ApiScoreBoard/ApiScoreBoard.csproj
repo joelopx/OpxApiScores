@@ -267,9 +267,9 @@
     <Compile Include="Helpers\Interfaces\IQueryObject.cs" />
     <Compile Include="Helpers\Query.cs" />
     <Compile Include="Helpers\QueryResult.cs" />
-    <Compile Include="Migrations\201709070250509_Initial.cs" />
-    <Compile Include="Migrations\201709070250509_Initial.Designer.cs">
-      <DependentUpon>201709070250509_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201709080358134_Initial.cs" />
+    <Compile Include="Migrations\201709080358134_Initial.Designer.cs">
+      <DependentUpon>201709080358134_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\IUnitOfWork.cs" />
@@ -367,8 +367,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709070250509_Initial.resx">
-      <DependentUpon>201709070250509_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709080358134_Initial.resx">
+      <DependentUpon>201709080358134_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

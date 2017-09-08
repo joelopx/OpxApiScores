@@ -46,8 +46,10 @@ namespace ApiScoreBoard.Controllers.api
             if (!ModelState.IsValid)
                 return BadRequest();
             RequestModel model=Mapper.Map<RequestModelDto,RequestModel>(modelDto);
+            _unitOfWork.Requests.Add(model);
             _unitOfWork.Complete();
-            return Ok();
+            modelDto.Id = model.Id;
+            return Created("api/Requests/"+modelDto.Id,modelDto);
         }
     }
 }
