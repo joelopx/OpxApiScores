@@ -5,9 +5,10 @@ using System.Web;
 
 namespace ApiScoreBoard.Resources.DtoModels
 {
-    public class ResponseModelDto
+    public class ResponseModelDto:BaseDto
     {
+        
         public int RequestId { get; set; }
-        public string UserId { get; set; }
+        public bool Accept { get; set; }
     }
 }

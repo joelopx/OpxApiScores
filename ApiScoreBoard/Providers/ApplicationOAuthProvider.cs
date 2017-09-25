@@ -10,12 +10,16 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using ApiScoreBoard.Models;
+using System.Web.Http.Cors;
+using Microsoft.Owin;
+using System.Configuration;
 
 namespace ApiScoreBoard.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
+
 
         public ApplicationOAuthProvider(string publicClientId)
         {
@@ -29,7 +33,10 @@ namespace ApiScoreBoard.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            context.Response.Headers.Add("Access-Control-Allow-Origin",
+                                                     new string[] { "*" });
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
+            
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
@@ -94,5 +101,57 @@ namespace ApiScoreBoard.Providers
             };
             return new AuthenticationProperties(data);
         }
+        //    /// <summary>
+        //    /// match endpoint is called before Validate Client Authentication. we need
+        //    /// to allow the clients based on domain to enable requests
+        //    /// the header
+        //    /// </summary>
+        //    /// <param name="context"></param>
+        //    /// <returns></returns>
+        //    public override Task MatchEndpoint(OAuthMatchEndpointContext context)
+        //    {
+        //        SetCORSPolicy(context.OwinContext);
+        //        if (context.Request.Method == "OPTIONS")
+        //        {
+        //            context.RequestCompleted();
+        //            return Task.FromResult(0);
+        //        }
+
+        //        return base.MatchEndpoint(context);
+        //    }
+
+
+        //    /// <summary>
+        //    /// add the allow-origin header only if the origin domain is found on the     
+        //    /// allowedOrigin list
+        //    /// </summary>
+        //    /// <param name="context"></param>
+        //    private void SetCORSPolicy(IOwinContext context)
+        //    {
+        //        string allowedUrls = ConfigurationManager.AppSettings["allowedOrigins"];
+
+        //        if (!String.IsNullOrWhiteSpace(allowedUrls))
+        //        {
+        //            var list = allowedUrls.Split(',');
+        //            if (list.Length > 0)
+        //            {
+
+        //                string origin = context.Request.Headers.Get("Origin");
+        //                var found = list.Where(item => item == origin).Any();
+        //                if (found)
+        //                {
+        //                    context.Response.Headers.Add("Access-Control-Allow-Origin",
+        //                                                 new string[] { origin });
+        //                }
+        //            }
+
+        //        }
+        //        context.Response.Headers.Add("Access-Control-Allow-Headers",
+        //                               new string[] { "Authorization", "Content-Type" });
+        //        context.Response.Headers.Add("Access-Control-Allow-Methods",
+        //                               new string[] { "OPTIONS", "POST" });
+
+        //    }
+        //}
     }
 }

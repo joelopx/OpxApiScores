@@ -20,6 +20,7 @@ namespace ApiScoreBoard.App_Start
             // Map Model to Dto
             CreateMap<ApplicationUser, UserDto>();
             CreateMap<RequestModel, RequestModelDto>();
+
             CreateMap<ResponseModel,ResponseModelDto>();
 
             //Map Dto to Model

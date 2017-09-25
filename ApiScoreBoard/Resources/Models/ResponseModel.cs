@@ -12,6 +12,7 @@ namespace ApiScoreBoard.Resources.Models
     {
         public int RequestId { get; set; }
         public string UserId { get; set; }
+        public bool Accept { get; set; }
         [ForeignKey("RequestId")]
         public RequestModel RequestModel { get; set; }
         [ForeignKey("UserId")]

@@ -11,6 +11,7 @@ namespace ApiScoreBoard.Resources.Models
     public class RequestModel:Base
     {
         public string UserId { get; set; }
+        public string UserEmail { get; set; }
         public bool Accepted { get; set; }
         public int RequestedQuantity { get; set; }
         public string ImgUrl { get; set; }

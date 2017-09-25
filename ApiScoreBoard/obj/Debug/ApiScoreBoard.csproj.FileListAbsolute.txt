@@ -331,5 +331,8 @@ C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.csprojResolveAss
 C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.csproj.CoreCompileInputs.cache
 C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.dll
 C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.pdb
+C:\Projects\RepoApiScores\ApiScoreBoard\bin\Microsoft.Owin.Cors.dll
+C:\Projects\RepoApiScores\ApiScoreBoard\bin\Microsoft.Owin.Cors.xml
 C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.Migrations.Initial.resources
 C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.csproj.GenerateResource.Cache
+C:\Projects\RepoApiScores\ApiScoreBoard\obj\Debug\ApiScoreBoard.Migrations.RefactorResponse.resources

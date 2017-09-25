@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using ApiScoreBoard.Resources.DtoModels;
 
 namespace ApiScoreBoard.Helpers.Filters
 {
@@ -24,17 +25,17 @@ namespace ApiScoreBoard.Helpers.Filters
         }
         public Task<HttpResponseMessage> ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func<Task<HttpResponseMessage>> continuation)
         {
-            var model = actionContext.ActionArguments.FirstOrDefault(x => x.Value is IBase).Value as IBase;
+            var model = actionContext.ActionArguments.FirstOrDefault(x => x.Value is BaseDto).Value as BaseDto;
             if (model == null) return continuation();
-            if (model.CreatedBy != null)
+            if (model.CreatedBy != null || model.CreatedDate !=null)
             {
-                //model.UpdatedBy = filterContext.HttpContext.User.Identity.GetUserId();
+                model.UpdatedBy = actionContext.RequestContext.Principal.Identity.GetUserId();
                 model.UpdatedDate = DateTime.Now;
 
             }
             else
             {
-                //model.CreatedBy = filterContext.HttpContext.User.Identity.GetUserId();
+                model.CreatedBy = actionContext.RequestContext.Principal.Identity.GetUserId();
                 model.CreatedDate = DateTime.Now;
             }
 

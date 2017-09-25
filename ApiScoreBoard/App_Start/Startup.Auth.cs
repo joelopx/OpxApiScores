@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ApiScoreBoard.Providers;
 using ApiScoreBoard.Models;
+using System.Web.Mvc;
 
 namespace ApiScoreBoard
 {
@@ -23,6 +24,7 @@ namespace ApiScoreBoard
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure el contexto de base de datos y el administrador de usuarios para usar una única instancia por solicitud
+         
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
@@ -35,7 +37,7 @@ namespace ApiScoreBoard
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
+                TokenEndpointPath = new PathString("/api/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(4),
@@ -45,7 +47,7 @@ namespace ApiScoreBoard
 
             // Permitir que la aplicación use tokens portadores para autenticar usuarios
             app.UseOAuthBearerTokens(OAuthOptions);
-
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             // Quitar los comentarios de las siguientes líneas para habilitar el inicio de sesión con proveedores de inicio de sesión de terceros
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",

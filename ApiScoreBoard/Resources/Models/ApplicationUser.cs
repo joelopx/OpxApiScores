@@ -18,6 +18,7 @@ namespace ApiScoreBoard.Models
             // Agregar aquí notificaciones personalizadas de usuario
             return userIdentity;
         }
+        public string ImgUrl { get; set; }
         public int Points { get; set; }
         public ICollection<RequestModel> Requests { get; set; }
         public ICollection<ResponseModel> Responses { get; set; }
